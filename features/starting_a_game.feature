@@ -16,5 +16,5 @@ Feature: playing battleships
     Then I see "Welcome, Player 1!"
 
   Scenario:
-    Given I am on the new game page
-    Then I can see a board
+    Given I am on the play game page
+    Then I can see "Water" on the board

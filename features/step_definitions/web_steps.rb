@@ -15,13 +15,17 @@ When(/^I do not fill in my "([^"]*)"$/) do |field|
 end
 
 Then(/^I see "([^"]*)"$/) do |text|
+  save_and_open_page
   expect(page).to have_content(text)
 end
 
-Given(/^I am on the new game page$/) do
-  visit '/new_game'
+Given(/^I am on the play game page$/) do
+  visit '/play_game'
 end
 
-Then(/^I can see a board$/) do
-  expect(page).to have_selector('table tr')
+Then(/^I can see "([^"]*)" on the board$/) do |text|
+  steps %{ Given I am on the homepage
+    And I click "Register" button
+    }
+  expect(page).to have_content(text)
 end

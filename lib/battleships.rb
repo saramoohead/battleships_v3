@@ -17,7 +17,6 @@ set :views, Proc.new { File.join(root, "..", "views") }
     board = Board.new({size: 9, cell: Cell})
     board.fill_all_content(Water.new)
     @name << "Player 1" if @name == ""
-    p board
     @data = board.rows
 
     erb :play_game
