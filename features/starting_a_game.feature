@@ -21,3 +21,6 @@ Feature: playing battleships
 
   Scenario:
     Given I can see "Water" on the board
+    When I fill in "coordinate" with "A1"
+    And I click "Place" button
+    Then I can see "Ship" on the board

@@ -2,7 +2,7 @@ class Board
   DEFAULT_SIZE = 1
   DEFAULT_NUMBER_OF_PIECES = 1
 
-  attr_reader :grid, :number_of_pieces, :size
+  attr_reader :grid, :number_of_pieces, :size, :coordinate
 
   def initialize options
     @size = options.fetch(:size, DEFAULT_SIZE)
@@ -36,7 +36,11 @@ class Board
   end
 
   def place ship, coordinate, orientation = :horizontally
-    raise "You can't place a ship outside the boundaries" unless coordinates_for(ship.size, coordinate, orientation).all? {|coordinate| coordinate_on_board?(coordinate)}
+    p ship
+    p coordinate
+    p grid[coordinate]
+    p grid[coordinate].content
+    #raise "You can't place a ship outside the boundaries" unless coordinates_for(ship.size, coordinate, orientation).all? {|coordinate| coordinate_on_board?(coordinate)}
     coordinates_for(ship.size, coordinate, orientation).each do |coordinate|
       grid[coordinate].content = ship
     end

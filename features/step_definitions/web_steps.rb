@@ -15,7 +15,6 @@ When(/^I do not fill in my "([^"]*)"$/) do |field|
 end
 
 Then(/^I see "([^"]*)"$/) do |text|
-  save_and_open_page
   expect(page).to have_content(text)
 end
 

@@ -19,6 +19,10 @@ class Ship
     new({size: 4})
   end
 
+  def self.dinghy
+    new({size: 1})
+  end
+
   private
   attr_reader :hits
 end

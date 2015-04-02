@@ -17,14 +17,18 @@ set :public_folder, Proc.new { File.join(root, "..", "public") }
   end
 
   post '/play_game' do
+    # the player
     @name = params[:name]
     @name << "player" if @name == ""
     session['player'] = @name
-    puts session.inspect
-    puts "===" * 10
+    # the board
     board = Board.new({size: 9, cell: Cell})
     board.fill_all_content(Water.new)
     @data = board.rows
+    # the ship
+    @coordinate = params[:coordinate]
+    dinghy = Ship.new({size: 1})
+    board.place(dinghy, @coordinate) if @coordinate
     erb :play_game
   end
 
