@@ -10,6 +10,10 @@ When(/^I click "([^"]*)" button$/) do |arg1|
   click_button(arg1)
 end
 
+When(/^I do not fill in my "([^"]*)"$/) do |field|
+  fill_in(field, :with => "")
+end
+
 Then(/^I see "([^"]*)"$/) do |text|
   expect(page).to have_content(text)
 end

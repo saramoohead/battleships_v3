@@ -13,6 +13,9 @@ set :views, Proc.new { File.join(root, "..", "views") }
 
   post '/play_game' do
     @name = params[:name]
+    puts params.inspect
+    @name << "Player 1" if @name == ""
+    puts params.inspect
     erb :play_game
   end
 

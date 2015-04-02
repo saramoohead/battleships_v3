@@ -8,3 +8,14 @@ Feature: playing battleships
     When I fill in "name" with "Milena"
     And I click "Register" button
     Then I see "Welcome, Milena!"
+
+  Scenario: register without a name
+    Given I am on the homepage
+    When I do not fill in my "name"
+    And I click "Register" button
+    Then I see "Welcome, Player 1!"
+
+  Scenario: 
+    Given I am on the new game page
+    When I click on the "Start game" button
+    Then I can see a board
