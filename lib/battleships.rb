@@ -1,4 +1,10 @@
 require 'sinatra/base'
+require_relative 'board'
+require_relative 'cell'
+require_relative 'game'
+require_relative 'player'
+require_relative 'water'
+require_relative 'ship'
 
 class Battleships < Sinatra::Base
 set :views, Proc.new { File.join(root, "..", "views") }
@@ -6,16 +12,14 @@ set :views, Proc.new { File.join(root, "..", "views") }
     erb :index
   end
 
-  get '/play_game' do
-    @name = params[:name]
-    erb :play_game
-  end
-
   post '/play_game' do
     @name = params[:name]
-    puts params.inspect
+    board = Board.new({size: 9, cell: Cell})
+    board.fill_all_content(Water.new)
     @name << "Player 1" if @name == ""
-    puts params.inspect
+    p board
+    @data = board.rows
+
     erb :play_game
   end
 

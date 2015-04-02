@@ -17,3 +17,11 @@ end
 Then(/^I see "([^"]*)"$/) do |text|
   expect(page).to have_content(text)
 end
+
+Given(/^I am on the new game page$/) do
+  visit '/new_game'
+end
+
+Then(/^I can see a board$/) do
+  expect(page).to have_selector('table tr')
+end

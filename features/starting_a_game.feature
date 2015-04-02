@@ -15,7 +15,6 @@ Feature: playing battleships
     And I click "Register" button
     Then I see "Welcome, Player 1!"
 
-  Scenario: 
+  Scenario:
     Given I am on the new game page
-    When I click on the "Start game" button
     Then I can see a board

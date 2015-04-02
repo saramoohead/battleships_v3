@@ -2,10 +2,10 @@ class Board
   DEFAULT_SIZE = 1
   DEFAULT_NUMBER_OF_PIECES = 1
 
-  attr_reader :grid, :number_of_pieces
+  attr_reader :grid, :number_of_pieces, :size
 
   def initialize options
-    size = options.fetch(:size, DEFAULT_SIZE)
+    @size = options.fetch(:size, DEFAULT_SIZE)
     cell = options.fetch(:cell)
     @number_of_pieces = options.fetch(:number_of_pieces, DEFAULT_NUMBER_OF_PIECES)
     @grid = create_grid(size, cell)
@@ -77,5 +77,8 @@ class Board
     all_ships_sunk? && ready?
   end
 
+  def rows
+    grid.values.map { |cell| cell.content.class }.each_slice(Math.sqrt(size)).to_a
+  end
 
 end
