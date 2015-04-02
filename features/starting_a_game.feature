@@ -6,4 +6,5 @@ Feature: playing battleships
   Scenario: register name
     Given I am on the homepage
     When I fill in "name" with "Milena"
+    And I click "Register" button
     Then I see "Welcome, Milena!"
