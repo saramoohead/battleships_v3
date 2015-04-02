@@ -7,18 +7,24 @@ require_relative 'water'
 require_relative 'ship'
 
 class Battleships < Sinatra::Base
+enable :sessions
 set :views, Proc.new { File.join(root, "..", "views") }
+set :public_folder, Proc.new { File.join(root, "..", "public") }
+
   get '/' do
+    @name = session['player']
     erb :index
   end
 
   post '/play_game' do
     @name = params[:name]
+    @name << "player" if @name == ""
+    session['player'] = @name
+    puts session.inspect
+    puts "===" * 10
     board = Board.new({size: 9, cell: Cell})
     board.fill_all_content(Water.new)
-    @name << "Player 1" if @name == ""
     @data = board.rows
-
     erb :play_game
   end
 

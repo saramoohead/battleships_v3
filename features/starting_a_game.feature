@@ -13,8 +13,11 @@ Feature: playing battleships
     Given I am on the homepage
     When I do not fill in my "name"
     And I click "Register" button
-    Then I see "Welcome, Player 1!"
+    Then I see "Welcome, player!"
 
   Scenario:
     Given I am on the play game page
     Then I can see "Water" on the board
+
+  Scenario:
+    Given I can see "Water" on the board
